@@ -19,13 +19,16 @@ class ContextualActionWidget<T> extends StatelessWidget {
   /// the child widget when not selected
   final Widget unselectedWidget;
 
+  // Callback for ActionMode enabled/disabled status
+  final Function(bool) onActionModeStatus;
+
   const ContextualActionWidget(
       {Key key,
       @required this.data,
       @required this.child,
       this.selectedWidget,
       this.unselectedWidget,
-      this.selectedColor})
+      this.selectedColor, this.onActionModeStatus})
       : assert(data != null),
         assert(child != null),
         super(key: key);
@@ -34,6 +37,8 @@ class ContextualActionWidget<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final itemController = Provider.of<ItemsController<T>>(context);
     final bool isItemAdded = itemController.isItemPresent(data);
+    //Updating the ActionMode enable/disable status
+    this.onActionModeStatus(itemController.actionModeEnable);
     return InkWell(
       onLongPress: () => itemController.enableActionMode(data),
       onTap: () => itemController.toggleItem(data),

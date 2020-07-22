@@ -96,6 +96,9 @@ class _WhatsappState extends State<Whatsapp> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       ContextualActionWidget(
+                        onActionModeStatus: (bool status) {
+                          //Enable/Disabled Status
+                        },
                         data: user,
                         child: ListTile(
                           onTap: () {
