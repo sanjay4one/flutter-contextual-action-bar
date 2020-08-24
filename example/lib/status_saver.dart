@@ -14,7 +14,7 @@ final imageList = _photoDir
 class StatusSaver extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ContextualActionScaffold<String>(
+    return ContextualScaffold<String>(
       appBar: AppBar(
         title: const Text("status saver"),
         actions: <Widget>[
@@ -31,7 +31,6 @@ class StatusSaver extends StatelessWidget {
           return Text("$count");
         },
         contextualActions: [
-
           ContextualAction(
             itemsHandler: (List<String> items) {
               showSnackbar(context, "${items.length} images saved");
