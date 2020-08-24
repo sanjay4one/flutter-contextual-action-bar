@@ -3,8 +3,11 @@ import 'package:flutter/cupertino.dart';
 class ItemsController<T> extends ChangeNotifier {
   final Set<T> _items = {};
   bool _actionModeEnabled = false;
+
   bool get actionModeEnable => _actionModeEnabled;
+
   List<T> get items => _items.toList();
+
   bool isItemPresent(T item) => _items.contains(item);
 
   void emptySelection() {
